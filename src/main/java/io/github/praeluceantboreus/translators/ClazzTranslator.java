@@ -75,9 +75,9 @@ public class ClazzTranslator implements Translator<Clazz>
 
 		try
 		{
-			Document doc = Jsoup.connect("https://intranet.spengergasse.at/infostundenplan/38/c/c00050.htm").get();
+			Document doc = Jsoup.connect("https://intranet.spengergasse.at/infostundenplan/38/c/c00075.htm").get();
 			// System.out.println(doc);
-			print(doc.body());
+			print(doc.body(), ret);
 		} catch (IOException e)
 		{
 			// TODO Auto-generated catch block
@@ -86,11 +86,22 @@ public class ClazzTranslator implements Translator<Clazz>
 		return ret;
 	}
 
-	public void print(Element element)
+	public void print(Element element, Clazz ret)
 	{
-		if (element.getAllElements().size() > 0)
-			for (Element child : element.getAllElements())
-				print(child);
-			System.out.println(element.data());
+		ArrayList<String> buffer = new ArrayList<>();
+		for (Element e : element.getAllElements())
+		{
+			if (e.children().size() == 0 && e.hasText())
+			{
+				// System.out.println(e.text());
+				buffer.add(e.text());
+			}
+			if (buffer.size() >= 3)
+			{
+				if (buffer.get(2).contains("."))
+					ret.addUnit(new Unit(0, 0, buffer.get(0), buffer.get(2), buffer.get(1)));
+				buffer.removeAll(buffer);
+			}
+		}
 	}
 }
