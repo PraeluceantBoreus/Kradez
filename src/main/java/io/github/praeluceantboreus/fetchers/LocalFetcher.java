@@ -20,7 +20,7 @@ public class LocalFetcher
 			String line;
 			while ((line = br.readLine()) != null)
 				lines.add(line);
-			return new ClazzTranslator().generate(lines);
+			return new ClazzTranslator().generateNew(lines);
 		} catch (IOException e)
 		{
 			// TODO Auto-generated catch block

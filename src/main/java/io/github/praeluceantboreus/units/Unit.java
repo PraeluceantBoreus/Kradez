@@ -7,7 +7,7 @@ public class Unit implements Translateable
 	private long start, end;
 	private String name, room, teacher;
 
-	private Unit(long start, long end, String name, String room, String teacher)
+	public Unit(long start, long end, String name, String room, String teacher)
 	{
 		super();
 		this.start = start;
