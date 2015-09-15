@@ -29,4 +29,10 @@ public class Clazz implements Translateable
 	{
 		return "Clazz [units=" + units + ", kv=" + kv + ", name=" + name + "]";
 	}
+	
+	@SuppressWarnings("unchecked")
+	public ArrayList<Unit> getUnits()
+	{
+		return (ArrayList<Unit>) units.clone();
+	}
 }

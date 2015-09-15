@@ -5,16 +5,16 @@ import java.util.GregorianCalendar;
 public class Unit implements Translateable
 {
 	private long start, end;
-	private String name, room, teacher;
+	private String name, teacher, room;
 
-	public Unit(long start, long end, String name, String room, String teacher)
+	public Unit(long start, long end, String name, String teacher, String room)
 	{
 		super();
 		this.start = start;
 		this.end = end;
 		this.name = name;
-		this.room = room;
 		this.teacher = teacher;
+		this.room = room;
 	}
 
 	public long getStart()
@@ -48,17 +48,17 @@ public class Unit implements Translateable
 
 	public String getRoom()
 	{
-		return room;
+		return teacher;
 	}
 
 	public String getTeacher()
 	{
-		return teacher;
+		return room;
 	}
 
 	@Override
 	public String toString()
 	{
-		return "Unit [start=" + start + ", end=" + end + ", name=" + name + ", room=" + room + ", teacher=" + teacher + "]";
+		return "Unit [start=" + start + ", end=" + end + ", name=" + name + ", teacher=" + teacher + ", room=" + room + "]";
 	}
 }
